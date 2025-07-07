@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ateliers Flowers</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="icon" href="img/favicon 2.png" type="image/x-icon">
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nanum+Myeongjo&family=Quicksand:wght@300..700&family=Roboto+Flex:opsz,wght@8..144,100..1000&display=swap" rel="stylesheet">
+  <style>
+     body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+    .hero-section {
+      background-image: url('https://plus.unsplash.com/premium_photo-1673569467802-16e61c7fadbd?q=80&w=870&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D');
+      background-size: cover;
+      background-position: center;
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+    }
+
+  main {
+    flex: 1;
+  }
+
+.navbar-nav .nav-link:hover {
+  color: #90400d !important; /* color al pasar el mouse: rojo Bootstrap */
+}
+  .btn-primary {
+     border-radius: 0px;
+    --bs-btn-color: #000;
+    --bs-btn-bg: ##f7f5f6;
+    --bs-btn-border-color: #f7f5f6;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #f7f5f6;
+    --bs-btn-hover-border-color: #f7f5f6;
+    --bs-btn-focus-shadow-rgb: 49,132,253;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #f7f5f6;
+    --bs-btn-active-border-color: #f7f5f6;
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #f7f5f6;
+    --bs-btn-disabled-border-color: #f7f5f6;
+}
+
+.text-center {
+     font-family: "Quicksand", sans-serif;
+}
+
+  .display-4{
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:300;
+  color: #000;
+  text-shadow: none;
+  }
+
+  
+
+  .lead{
+    color: #000;
+    text-shadow: none;
+     font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-size: small;
+  }
+.card-title{
+      font-family: "Roboto Flex", sans-serif;
+      font-weight: 300;
+
+}
+
+  footer {
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+  }
+    .navbar {
+          background-color: #f7f5f6;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      transition: box-shadow 0.3s ease;
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .nav-link {
+      color: #000 !important;
+      font-weight: 400;
+       font-family: "Montserrat", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+    }
+
+    .nav-link:hover {
+      color: #555 !important;
+    }
+
+    .dropdown-menu {
+      border-radius: 0;
+      border: none;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+       font-family: "Montserrat", sans-serif;
+
+    }
+
+    .navbar-brand img {
+      height: 150px;
+    }
+
+    .navbar-center {
+      flex-grow: 1;
+      justify-content: center;
+    }
+
+    @media (max-width: 991.98px) {
+      .navbar-collapse {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .navbar-center {
+        order: -1;
+        justify-content: center !important;
+        margin-bottom: 1rem;
+      }
+    }
+
+     .card-img-top {
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+}
+.card-footer{
+    font-family: 'Montserrat';
+    font-weight: 200;
+    }
+.product-title{
+   font-family: "Nanum Myeongjo", serif;
+  font-weight: 600;
+  font-style: normal;
+  font-size: 2em;
+    }
+    
+.text-primary{
+    color: #000 !important;
+}
+  </style>
+</head>
+<body>
+
+      <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container d-flex flex-wrap justify-content-between align-items-center">
+
+      <!-- Botón hamburguesa -->
+      <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+        aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse w-100" id="navbarContent">
+        <!-- Menú izquierdo -->
+        <ul class="navbar-nav me-auto d-flex flex-row gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="#">INICIO</a>
+          </li>
+           <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">SHOP</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">JARRONES</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">SUSCRIPCIONES</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">100 €/MES</a></li>
+              <li><a class="dropdown-item" href="#">200 €/MES</a></li>
+              <li><a class="dropdown-item" href="#">600 €/MES</a></li>
+              <li><a class="dropdown-item" href="#">PERSONALIZADA</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#"></a>
+          </li>
+        </ul>
+
+        <!-- Logo centrado -->
+        <div class="navbar-center d-flex">
+          <a class="navbar-brand" href="#">
+            <img src="img/logo original nav 3.png" alt="Logo">
+          </a>
+        </div>
+
+        <!-- Menú derecho -->
+        <ul class="navbar-nav ms-auto d-flex flex-row gap-3">
+          <li class="nav-item">
+            <a class="nav-link" href="#">MARBELLA</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">EMPRESA</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">CONTACTO</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">JARRONES</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <!-- Repite esta tarjeta 18 veces para tener 6 filas x 3 columnas -->
+      <!-- Tarjeta de producto -->
+      <div class="col">
+        <div class="card h-100 border-0 border-0">
+          <img src="JARRONES/JPG/01.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Calella</h4>
+            <h5 class="card-title">Jarrón de cerámica con acabado mate y líneas minimalistas.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+      <!-- Fin de tarjeta de producto -->
+<div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/02.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Navagio</h4>
+            <h5 class="card-title">Diseño vintage con detalles florales pintados a mano.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+      <!-- Copia y pega el bloque de tarjeta 17 veces más para completar las 6 filas -->
+       <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/03.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Calella</h4>
+            <h5 class="card-title">Jarrón de vidrio ámbar soplado artesanalmente.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/04.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Trenc</h4>
+            <h5 class="card-title">Moderno y geométrico, ideal para espacios contemporáneos.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/05.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Agios</h4>
+            <h5 class="card-title">Inspirado en la cultura japonesa, acabado rústico.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/06.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Myrtos</h4>
+            <h5 class="card-title">Jarrón metálico con textura martillada, estilo industrial.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/07.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Sa Caleta</h4>
+            <h5 class="card-title">Forma orgánica y curvas suaves en cerámica blanca.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/08.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Palombaggia</h4>
+            <h5 class="card-title">Estilo escandinavo con esmalte pastel.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/10.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Mondello</h4>
+            <h5 class="card-title">Jarrón decorativo con diseño abstracto en tonos tierra.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/11.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Elafonisi</h4>
+            <h5 class="card-title">Hecho a mano con arcilla roja y detalles en relieve.
+
+</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/12.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Porto</h4>
+            <h5 class="card-title">Jarrón alto de cristal translúcido, elegante y sobrio</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/13.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Torre dell'Orso</h4>
+            <h5 class="card-title">Diseño tropical con estampados de hojas verdes.
+
+</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/14.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Balos</h4>
+            <h5 class="card-title">Pieza escultórica en cerámica esmaltada gris.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/15.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Plage d’Argent</h4>
+            <h5 class="card-title">Jarrón bohemio con franjas de colores vivos.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/16.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Djerba</h4>
+            <h5 class="card-title">Estilo clásico con bordes dorados y cuerpo ovalado.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/17.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Macarella</h4>
+            <h5 class="card-title">Diseño minimalista en blanco y negro, contraste moderno.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card h-100 border-0">
+          <img src="JARRONES/JPG/18.jpg" class="card-img-top" alt="Producto">
+          <div class="card-body">
+            <h4 class="product-title">Calella</h4>
+            <h5 class="card-title">Jarrón de cemento pulido, ideal para exteriores.</h5>
+            <p class="card-text">Colección: Primavera 2025</p>
+          </div>
+          <div class="card-footer">
+            <strong class="text-primary">$49.99</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

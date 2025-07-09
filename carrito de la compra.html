@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cesta de Compra</title>
+
+  <!-- Google Fonts: Montserrat -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+
+  <style>
+    body {
+      background-color: #f8f9fa;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .card, .checkout-summary {
+      border: none;
+      border-radius: 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+
+    .product-img {
+      max-width: 100px;
+    }
+
+    .checkout-summary {
+      background-color: #fff;
+      padding: 1.5rem;
+    }
+
+    .btn-primary {
+      background-color: #90400d;
+      border-color: #90400d;
+      border-radius: 0;
+    }
+
+    .btn-primary:hover {
+      background-color: #723107;
+      border-color: #723107;
+    }
+
+    .fw-bold, .price {
+      color: #90400d;
+    }
+
+    input.form-control {
+      border-radius: 0;
+    }
+
+    h2, h4 {
+      font-weight: 700;
+    }
+
+    .list-group-item {
+      border: none;
+      padding: 0.75rem 1rem;
+    }
+    .product-item {
+  transition: opacity 0.4s ease;
+}
+.product-item.fade-out {
+  opacity: 0;
+}
+.btn-sm .btn-outline-danger:hover {
+     font-size: 1.5em;
+    color: #0000;
+}
+
+
+
+  </style>
+</head>
+<body>
+  <div class="container py-5">
+    <h2 class="mb-4 text-center">Tu Cesta de Compra</h2>
+
+    <div class="row">
+      <div class="col-lg-8" id="cart-items">
+      <!-- Producto 1 -->
+<div class="card mb-4 p-3 product-item" data-price="59.99">
+  <div class="row g-3 align-items-center">
+    <div class="col-md-2 text-center">
+      <img src="JARRONES/JPG/11.jpg" alt="Producto 1" class="product-img">
+    </div>
+    <div class="col-md-5">
+      <h5 class="mb-1">Jarrón Cavalli</h5>
+      <p class="text-muted small mb-0">Cerámica esmaltada.</p>
+    </div>
+    <div class="col-md-2 text-center">
+      <span class="fw-bold price">59.99 €</span>
+    </div>
+    <div class="col-md-2 text-center">
+      <input type="number" class="form-control quantity-input" min="1" value="1">
+    </div>
+    <div class="col-md-1 text-center">
+      <button class="btn btn-sm btn-outline-danger border-0" onclick="eliminarProducto(this)" title="Eliminar" style="font-size: 1.5em; color: #90400d;"><i class="bi bi-x-circle"></i></button>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Producto 1 -->
+<div class="card mb-4 p-3 product-item" data-price="59.99">
+  <div class="row g-3 align-items-center">
+    <div class="col-md-2 text-center">
+      <img src="JARRONES/JPG/12.jpg" alt="Producto 1" class="product-img">
+    </div>
+    <div class="col-md-5">
+      <h5 class="mb-1">Jarrón Sintra</h5>
+      <p class="text-muted small mb-0">Cristal tintado.</p>
+    </div>
+    <div class="col-md-2 text-center">
+      <span class="fw-bold price">29.99 €</span>
+    </div>
+    <div class="col-md-2 text-center">
+      <input type="number" class="form-control quantity-input" min="1" value="1">
+    </div>
+    <div class="col-md-1 text-center">
+      <button class="btn btn-sm btn-outline-danger border-0" onclick="eliminarProducto(this)" title="Eliminar"style="font-size: 1.5em; color: #90400d;"><i class="bi bi-x-circle"></i></button>
+    </div>
+  </div>
+</div>
+
+
+      <!-- Resumen -->
+      <div class="col-lg-4">
+        <div class="checkout-summary">
+          <h4 class="mb-3">Resumen</h4>
+          <ul class="list-group mb-3">
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Subtotal</span>
+              <strong id="subtotal">€0.00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>IVA (21%)</span>
+              <strong id="iva">€0.00</strong>
+            </li>
+            <li class="list-group-item d-flex justify-content-between">
+              <span>Total</span>
+              <strong id="total">€0.00</strong>
+            </li>
+          </ul>
+          <button class="btn btn-primary w-100 btn-lg" onclick="pagar()">INICIAR PAGO</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function actualizarTotales() {
+      const productos = document.querySelectorAll('.product-item');
+      let subtotal = 0;
+
+      productos.forEach(producto => {
+        const precioUnitario = parseFloat(producto.dataset.price);
+        const cantidad = parseInt(producto.querySelector('.quantity-input').value);
+        subtotal += precioUnitario * cantidad;
+      });
+
+      const iva = subtotal * 0.21;
+      const total = subtotal + iva;
+
+      document.getElementById('subtotal').textContent = `€${subtotal.toFixed(2)}`;
+      document.getElementById('iva').textContent = `€${iva.toFixed(2)}`;
+      document.getElementById('total').textContent = `€${total.toFixed(2)}`;
+    }
+
+    function pagar() {
+      alert('Redirigiendo a la pasarela de pago...');
+      // window.location.href = "pago.html";
+    }
+
+    // Inicializar totales
+    actualizarTotales();
+
+    // Escuchar cambios
+    document.querySelectorAll('.quantity-input').forEach(input => {
+      input.addEventListener('input', () => {
+        if (input.value < 1) input.value = 1;
+        actualizarTotales();
+      });
+    });
+
+ function eliminarProducto(boton) {
+  if (!confirm("¿Estás seguro de que deseas eliminar este producto de la cesta?")) {
+    return;
+  }
+
+  const producto = boton.closest('.product-item');
+  producto.classList.add('fade-out');
+
+  setTimeout(() => {
+    producto.remove();
+    actualizarTotales();
+  }, 400); // tiempo igual al de la transición CSS
+}
+
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
